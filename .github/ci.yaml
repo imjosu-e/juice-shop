@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Josue Teste - CI Pipeline
 
 on:
   workflow_call:
