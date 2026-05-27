@@ -13,10 +13,10 @@ on:
         default: true
 
 env:
-  JUICE_SHOP_REPO: YOUR_ORG/juice-shop
-  VAMPI_REPO:      YOUR_ORG/VAmPI
-  TERRAGOAT_REPO:  YOUR_ORG/terragoat
-  DIVA_REPO:       YOUR_ORG/diva-android
+  JUICE_SHOP_REPO: imjosu-ejuice-shop
+  VAMPI_REPO:      imjosu-e/VAmPI
+  TERRAGOAT_REPO:  imjosu-e/terragoat
+  DIVA_REPO:       imjosu-e/diva-android
 
 jobs:
   ci-juice-shop:
