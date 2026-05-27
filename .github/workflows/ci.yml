@@ -139,7 +139,9 @@ jobs:
       - name: Checkout framework (configs)
         uses: actions/checkout@v4
         with:
+          repository: imjosu-e/framework.pipelines
           path: framework
+          ref: main
 
       - name: Checkout source code
         uses: actions/checkout@v4
@@ -261,7 +263,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          repository: imjosu-e/framework.pipelines
           path: framework
+          ref: main
       - uses: actions/download-artifact@v4
         with:
           path: all-reports

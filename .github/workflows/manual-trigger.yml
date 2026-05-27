@@ -1,0 +1,51 @@
+name: Manual CI (All Example Repos)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_tests:
+        description: "Run tests (if available)"
+        type: boolean
+        default: false
+      fail_on_critical_high:
+        description: "Fail pipeline on CRITICAL/HIGH findings"
+        type: boolean
+        default: true
+
+jobs:
+  ci-juice-shop:
+    uses: ./.github/workflows/ci.yml
+    with:
+      language: nodejs
+      repository: ${{ vars.JUICE_SHOP_REPO }}
+      test_command: npm test
+      fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
+    secrets: inherit
+
+  ci-vampi:
+    uses: ./.github/workflows/ci.yml
+    with:
+      language: python
+      repository: ${{ vars.VAMPI_REPO }}
+      test_command: pytest
+      fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
+    secrets: inherit
+
+  ci-terragoat:
+    uses: ./.github/workflows/ci.yml
+    with:
+      language: terraform
+      repository: ${{ vars.TERRAGOAT_REPO }}
+      build_command: terraform fmt -check
+      fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
+    secrets: inherit
+
+  ci-diva:
+    uses: ./.github/workflows/ci.yml
+    with:
+      language: java
+      repository: ${{ vars.DIVA_REPO }}
+      build_command: ./gradlew build
+      test_command: ./gradlew test
+      fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
+    secrets: inherit
