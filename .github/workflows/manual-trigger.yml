@@ -1,4 +1,4 @@
-name: 🧪 Manual CI (All Example Repos)
+name: Manual CI (All Example Repos)
 
 on:
   workflow_dispatch:
