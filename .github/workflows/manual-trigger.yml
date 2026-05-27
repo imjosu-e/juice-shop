@@ -12,18 +12,12 @@ on:
         type: boolean
         default: true
 
-env:
-  JUICE_SHOP_REPO: imjosu-e/juice-shop
-  VAMPI_REPO:      imjosu-e/VAmPI
-  TERRAGOAT_REPO:  imjosu-e/terragoat
-  DIVA_REPO:       imjosu-e/diva-android
-
 jobs:
   ci-juice-shop:
     uses: ./.github/workflows/ci.yml
     with:
       language: nodejs
-      repository: ${{ env.JUICE_SHOP_REPO }}
+      repository: ${{ vars.JUICE_SHOP_REPO }}
       test_command: npm test
       fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
     secrets: inherit
@@ -32,7 +26,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
     with:
       language: python
-      repository: ${{ env.VAMPI_REPO }}
+      repository: ${{ vars.VAMPI_REPO }}
       test_command: pytest
       fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
     secrets: inherit
@@ -41,7 +35,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
     with:
       language: terraform
-      repository: ${{ env.TERRAGOAT_REPO }}
+      repository: ${{ vars.TERRAGOAT_REPO }}
       build_command: terraform fmt -check
       fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
     secrets: inherit
@@ -50,7 +44,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
     with:
       language: java
-      repository: ${{ env.DIVA_REPO }}
+      repository: ${{ vars.DIVA_REPO }}
       build_command: ./gradlew build
       test_command: ./gradlew test
       fail_on_critical_high: ${{ inputs.fail_on_critical_high }}
